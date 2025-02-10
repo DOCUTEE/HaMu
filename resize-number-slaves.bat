@@ -18,14 +18,3 @@ if %i% leq %N% (
     set /a i=%i% + 1
     goto loop
 )
-
-echo.
-
-echo.
-echo Build docker hadoop image
-echo.
-
-REM Rebuild kiwenlau/hadoop image
-docker build -t docutee/hadoop-master .
-
-echo.
