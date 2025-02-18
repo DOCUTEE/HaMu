@@ -14,30 +14,30 @@ REM Create hadoop network
 docker network create --driver=bridge hadoop-network >nul 2>&1
 
 REM Start Hadoop master container
-echo start minhquang-master container...
-docker rm -f minhquang-master >nul 2>&1
+echo start phuongngan-master container...
+docker rm -f phuongngan-master >nul 2>&1
 docker run -itd ^
     --net=hadoop-network ^
-    --name minhquang-master ^
-    --hostname minhquang-master ^
+    --name phuongngan-master ^
+    --hostname phuongngan-master ^
     docutee/hadoop-master >nul 2>&1
 
 REM copy workers file to master container
-docker cp master\config\workers minhquang-master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
+docker cp master\config\workers phuongngan-master:/home/hadoopphuongngan/hadoop/etc/hadoop/workers
 
 REM convert workers from dos to unix
-docker exec minhquang-master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
+docker exec phuongngan-master dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/workers
 
 REM Start Hadoop slave containers
 set /a i=1
 :loop
 if %i% leq %N% (
-    echo start minhquang-slave%i% container...
-    docker rm -f minhquang-slave%i% >nul 2>&1
+    echo start phuongngan-slave%i% container...
+    docker rm -f phuongngan-slave%i% >nul 2>&1
     docker run -itd ^
         --net=hadoop-network ^
-        --name minhquang-slave%i% ^
-        --hostname minhquang-slave%i% ^
+        --name phuongngan-slave%i% ^
+        --hostname phuongngan-slave%i% ^
         docutee/hadoop-slave >nul 2>&1
     set /a i=%i% + 1
     goto loop
@@ -45,4 +45,4 @@ if %i% leq %N% (
 
 
 REM Get into the Hadoop master container
-docker start -i minhquang-master
+docker start -i phuongngan-master

@@ -14,7 +14,7 @@ del master\config\workers
 
 :loop
 if %i% leq %N% (
-    echo minhquang-slave%i% >> master\config\workers
+    echo phuongngan-slave%i% >> master\config\workers
     set /a i=%i% + 1
     goto loop
 )

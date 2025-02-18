@@ -28,7 +28,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>mapreduce.jobtracker.address</name>
 
-		<value>minhquang-master:9001</value>
+		<value>phuongngan-master:9001</value>
 	</property>
 	<property>
 
@@ -40,14 +40,14 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.app.mapreduce.am.env</name>
 
-		<value>HADOOP_MAPRED_HOME=/home/hadoopminhquang/hadoop</value>
+		<value>HADOOP_MAPRED_HOME=/home/hadoopphuongngan/hadoop</value>
 
 	</property>
 
 	<property>
 
 		<name>mapreduce.map.env</name>	
-		<value>HADOOP_MAPRED_HOME=/home/hadoopminhquang/hadoop</value>
+		<value>HADOOP_MAPRED_HOME=/home/hadoopphuongngan/hadoop</value>
 
 	</property>
 
@@ -55,7 +55,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>mapreduce.reduce.env</name>
 
-		<value>HADOOP_MAPRED_HOME=/home/hadoopminhquang/hadoop</value>
+		<value>HADOOP_MAPRED_HOME=/home/hadoopphuongngan/hadoop</value>
 
 	</property>
 </configuration>
