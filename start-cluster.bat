@@ -16,11 +16,17 @@ docker network create --driver=bridge hadoop-network >nul 2>&1
 REM Start Hadoop master container
 echo start minhquang-master container...
 docker rm -f minhquang-master >nul 2>&1
-docker run -itd ^
+docker run ^
+    -p 9870:9870 ^
+    -p 9864:9864 ^
+    -p 8088:8088 ^
+    -p 8042:8042 ^
+    -p 9000-9006:9000-9006 ^
+    -itd ^
     --net=hadoop-network ^
     --name minhquang-master ^
     --hostname minhquang-master ^
-    docutee/hadoop-master >nul 2>&1
+    hadoop-master >nul 2>&1
 
 REM copy workers file to master container
 docker cp master\config\workers minhquang-master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
@@ -38,7 +44,7 @@ if %i% leq %N% (
         --net=hadoop-network ^
         --name minhquang-slave%i% ^
         --hostname minhquang-slave%i% ^
-        docutee/hadoop-slave >nul 2>&1
+        hadoop-slave >nul 2>&1
     set /a i=%i% + 1
     goto loop
 )
