@@ -3,7 +3,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 🚀 **HaMu** is a tool for quickly deploying a fully containerized pseudo-distributed Hadoop cluster, making Hadoop setup faster and easier.
 
-##📖 **My Story** *(can be ignored)* 
+## 📖 **My Story** *(can be ignored)* 
 
 Setting up a Hadoop cluster manually can be frustrating, especially for beginners. My friends and I faced several challenges when deploying a multi-node Hadoop cluster on **VMware**, such as configuration issues, poor scalability, and inefficient resource usage. To solve these problems, I developed **HaMu**, a tool that simplifies Hadoop deployment using Docker containers.  
 
