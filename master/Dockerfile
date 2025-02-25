@@ -13,7 +13,7 @@ RUN apt-get update && apt-get upgrade -y && \
 
 # Set environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV HADOOP_HOME=/home/hadoopphuongngan/hadoop
+ENV HADOOP_HOME=/home/hadoopminhquang/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin
 
 # Configure SSH
@@ -23,77 +23,77 @@ RUN ssh-keygen -A && \
     sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config && \
     mkdir -p /var/run/sshd
 
-# Create user hadoopphuongngan
-RUN adduser --disabled-password --gecos "" hadoopphuongngan && \
-    echo "hadoopphuongngan:hadoopphuongngan" | chpasswd && \
-    usermod -aG sudo hadoopphuongngan && \
-    echo "hadoopphuongngan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+# Create user hadoopminhquang
+RUN adduser --disabled-password --gecos "" hadoopminhquang && \
+    echo "hadoopminhquang:hadoopminhquang" | chpasswd && \
+    usermod -aG sudo hadoopminhquang && \
+    echo "hadoopminhquang ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install Hadoop
-USER hadoopphuongngan
-WORKDIR /home/hadoopphuongngan
+USER hadoopminhquang
+WORKDIR /home/hadoopminhquang
 RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz && \
     tar -xzf hadoop-3.4.1.tar.gz && \
     mv hadoop-3.4.1 hadoop && \
     rm hadoop-3.4.1.tar.gz
 
 # Set JAVA_HOME in hadoop-env.sh
-RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopphuongngan/hadoop/etc/hadoop/hadoop-env.sh
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopminhquang/hadoop/etc/hadoop/hadoop-env.sh
 
 # Configure bashrc
-# RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_HOME=/home/hadoopphuongngan/hadoop" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_HDFS_HOME=\$HADOOP_HOME" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_CONF_DIR=\$HADOOP_HOME/etc/hadoop" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_YARN_HOME=\$HADOOP_HOME" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_HOME/lib/native" >> /home/hadoopphuongngan/.bashrc && \
-#     echo "export HADOOP_OPTS=\"-Djava.library.path=\$HADOOP_HOME/lib/native\"" >> /home/hadoopphuongngan/.bashrc
+# RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_HOME=/home/hadoopminhquang/hadoop" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_HDFS_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_CONF_DIR=\$HADOOP_HOME/etc/hadoop" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_YARN_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_HOME/lib/native" >> /home/hadoopminhquang/.bashrc && \
+#     echo "export HADOOP_OPTS=\"-Djava.library.path=\$HADOOP_HOME/lib/native\"" >> /home/hadoopminhquang/.bashrc
     
 
 # Copy Hadoop configuration files
-COPY config/.bashrc /home/hadoopphuongngan/.bashrc
-COPY config/core-site.xml /home/hadoopphuongngan/hadoop/etc/hadoop/core-site.xml
-COPY config/hdfs-site.xml /home/hadoopphuongngan/hadoop/etc/hadoop/hdfs-site.xml
-COPY config/mapred-site.xml /home/hadoopphuongngan/hadoop/etc/hadoop/mapred-site.xml
-COPY config/yarn-site.xml /home/hadoopphuongngan/hadoop/etc/hadoop/yarn-site.xml
-COPY config/workers /home/hadoopphuongngan/hadoop/etc/hadoop/workers
+COPY config/.bashrc /home/hadoopminhquang/.bashrc
+COPY config/core-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/core-site.xml
+COPY config/hdfs-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/hdfs-site.xml
+COPY config/mapred-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/mapred-site.xml
+COPY config/yarn-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/yarn-site.xml
+COPY config/workers /home/hadoopminhquang/hadoop/etc/hadoop/workers
 
-# Copy files in ssh folder to /home/hadoopphuongngan/.ssh
-COPY config/ssh/* /home/hadoopphuongngan/.ssh/
+# Copy files in ssh folder to /home/hadoopminhquang/.ssh
+COPY config/ssh/* /home/hadoopminhquang/.ssh/
 
 # Add permission to ssh folder and keys
 USER root
-RUN chmod 700 /home/hadoopphuongngan/.ssh && \
-    chmod 600 /home/hadoopphuongngan/.ssh/id_rsa && \
-    chmod 644 /home/hadoopphuongngan/.ssh/id_rsa.pub && \
-    chmod 600 /home/hadoopphuongngan/.ssh/authorized_keys && \
-    chown -R hadoopphuongngan:hadoopphuongngan /home/hadoopphuongngan/.ssh
+RUN chmod 700 /home/hadoopminhquang/.ssh && \
+    chmod 600 /home/hadoopminhquang/.ssh/id_rsa && \
+    chmod 644 /home/hadoopminhquang/.ssh/id_rsa.pub && \
+    chmod 600 /home/hadoopminhquang/.ssh/authorized_keys && \
+    chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/.ssh
 
 
-# RUN mkdir -p /home/hadoopphuongngan/.ssh && \
-#     ssh-keygen -t rsa -f /home/hadoopphuongngan/.ssh/id_rsa -P "" && \
-#     cat /home/hadoopphuongngan/.ssh/id_rsa.pub >> /home/hadoopphuongngan/.ssh/authorized_keys && \
-#     chmod 600 /home/hadoopphuongngan/.ssh/authorized_keys && \
-#     chown -R hadoopphuongngan:hadoopphuongngan /home/hadoopphuongngan/.ssh
+# RUN mkdir -p /home/hadoopminhquang/.ssh && \
+#     ssh-keygen -t rsa -f /home/hadoopminhquang/.ssh/id_rsa -P "" && \
+#     cat /home/hadoopminhquang/.ssh/id_rsa.pub >> /home/hadoopminhquang/.ssh/authorized_keys && \
+#     chmod 600 /home/hadoopminhquang/.ssh/authorized_keys && \
+#     chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/.ssh
 
 # Install dos2unix
 RUN apt-get update && apt-get install -y dos2unix && apt-get clean
 
 # Convert files to Unix format
-RUN dos2unix /home/hadoopphuongngan/.bashrc && \
-    dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/core-site.xml && \
-    dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/hdfs-site.xml && \
-    dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/yarn-site.xml && \
-    dos2unix /home/hadoopphuongngan/.ssh/* && \
-    dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/mapred-site.xml && \
-    dos2unix /home/hadoopphuongngan/hadoop/etc/hadoop/workers
+RUN dos2unix /home/hadoopminhquang/.bashrc && \
+    dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/core-site.xml && \
+    dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/hdfs-site.xml && \
+    dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/yarn-site.xml && \
+    dos2unix /home/hadoopminhquang/.ssh/* && \
+    dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/mapred-site.xml && \
+    dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
 
 # Format HDFS
-USER hadoopphuongngan
+USER hadoopminhquang
 RUN hdfs namenode -format
 
 USER root
@@ -101,4 +101,4 @@ USER root
 EXPOSE 22 50070 8088 9000
 
 # Start SSH and Hadoop services
-CMD ["/bin/bash", "-c", "service ssh start && su - hadoopphuongngan && bash"]
+CMD ["/bin/bash", "-c", "service ssh start && su - hadoopminhquang && bash"]

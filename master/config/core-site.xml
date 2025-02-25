@@ -21,7 +21,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>fs.defaultFS</name>
 
-		<value>hdfs://phuongngan-master:9000</value>
+		<value>hdfs://minhquang-master:9000</value>
 
 		<description>Use HDFS as file storage engine</description>
 
