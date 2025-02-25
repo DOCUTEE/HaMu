@@ -79,5 +79,7 @@ RUN dos2unix /home/hadoopminhquang/.bashrc && \
     dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/yarn-site.xml && \
     dos2unix /home/hadoopminhquang/.ssh/*
 
+# Expose ports
+EXPOSE 9864
 # Start SSH and Hadoop services at runtime
 CMD ["bash", "-c", "service ssh start && bash"]

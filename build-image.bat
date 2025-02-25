@@ -1,2 +1,2 @@
-docker build -t docutee/hadoop-master ./master
-docker build -t docutee/hadoop-slave ./slave
+docker build -t hadoop-master ./master
+docker build -t hadoop-slave ./slave
