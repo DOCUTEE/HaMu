@@ -39,19 +39,6 @@ RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz
 
 # Set JAVA_HOME in hadoop-env.sh
 RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopminhquang/hadoop/etc/hadoop/hadoop-env.sh
-
-# Configure bashrc
-# RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_HOME=/home/hadoopminhquang/hadoop" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_HDFS_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_CONF_DIR=\$HADOOP_HOME/etc/hadoop" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_YARN_HOME=\$HADOOP_HOME" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_HOME/lib/native" >> /home/hadoopminhquang/.bashrc && \
-#     echo "export HADOOP_OPTS=\"-Djava.library.path=\$HADOOP_HOME/lib/native\"" >> /home/hadoopminhquang/.bashrc
     
 
 # Copy Hadoop configuration files
@@ -74,12 +61,6 @@ RUN chmod 700 /home/hadoopminhquang/.ssh && \
     chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/.ssh
 
 
-# RUN mkdir -p /home/hadoopminhquang/.ssh && \
-#     ssh-keygen -t rsa -f /home/hadoopminhquang/.ssh/id_rsa -P "" && \
-#     cat /home/hadoopminhquang/.ssh/id_rsa.pub >> /home/hadoopminhquang/.ssh/authorized_keys && \
-#     chmod 600 /home/hadoopminhquang/.ssh/authorized_keys && \
-#     chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/.ssh
-
 # Install dos2unix
 RUN apt-get update && apt-get install -y dos2unix && apt-get clean
 
@@ -98,7 +79,7 @@ RUN hdfs namenode -format
 
 USER root
 # Expose ports
-EXPOSE 22 50070 8088 9000
+EXPOSE 9000 9001 9002 9003 9004 9005 9006 9870 9864 8088 8042
 
 # Start SSH and Hadoop services
 CMD ["/bin/bash", "-c", "service ssh start && su - hadoopminhquang && bash"]
