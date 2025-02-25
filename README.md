@@ -11,6 +11,7 @@
 - 🔄 [Modify the Owner Name](#modify-the-owner-name)  
 - 🌐 [Interact with the Web UI](#-interact-with-the-web-ui)
 - ✨ [Contributors](#contributors-)
+- 📞 [Contact](#contact)
 
 ## 📖 **My Story** *(feel free to skip)* 
 
