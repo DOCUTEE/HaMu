@@ -1,9 +1,9 @@
 
-# HaMu
+HaMu – Simplified Deployment for Hadoop Multi-Node Clusters
 
 🚀 HaMu is a tool for quickly deploying a fully containerized pseudo-distributed Hadoop cluster, making Hadoop setup faster and easier.
 
-## **My Story**  
+##📖 **My Story** *(can be ignored)* 
 
 Setting up a Hadoop cluster manually can be frustrating, especially for beginners. My friends and I faced several challenges when deploying a multi-node Hadoop cluster on **VMware**, such as configuration issues, poor scalability, and inefficient resource usage. To solve these problems, I developed **HaMu**, a tool that simplifies Hadoop deployment using Docker containers.  
 
@@ -18,22 +18,25 @@ I first learned about Hadoop in the **Introduction to Big Data** course at my un
 
 To address these issues, I decided to containerize the Hadoop system using **Docker**. This project serves as a final summary of my knowledge in both Hadoop and Docker.  
 
-I hope **HaMu** helps you quickly set up a Hadoop multi-node cluster, making it easier and more efficient to practice Hadoop. 🚀  
+💡 I hope **HaMu** helps you quickly set up a Hadoop multi-node cluster, making it easier and more efficient to practice Hadoop. 🚀  
 
 
 
-## Authors
+## 👥 Authors
 
-- [@DOCUTEE](https://github.com/DOCUTEE)
+- [@Quang Nguyen](https://github.com/DOCUTEE)
 
+## Contributors
+
+[![All Contributors](https://img.shields.io/github/all-contributors/DOCUTEE/HaMu?color=ee8449&style=flat-square)](#contributors)
 ## 
 
-## Features  
+## ✨ Features  
 
 - Deploy a Hadoop multi-node cluster with a single command.  
 - Customize the number of slave nodes.  
-- Set the cluster owner's name.  
-- Interact with the cluster via CLI or Web UI.  
+- [Set the cluster owner's name.](#modify-the-owner-name)
+- [Interact with the cluster via CLI or Web UI.](#-interact-with-the-web-ui)
 
 ## 🚀 Installation Guide  
 
@@ -47,7 +50,7 @@ cd HaMu
 ```
 
 ### **Step 2: Build Docker Images (Optional)**  
-Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)).  
+Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)). Make sure Docker is running before proceeding.
 
 > **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
 
@@ -91,6 +94,17 @@ If you need to change the owner name, run the `rename-owner.py` script and enter
 ```sh
 python rename-owner.py
 ```
+
+### 🌐 Interact with the Web UI  
+
+You can access the following web interfaces to monitor and manage your Hadoop cluster:  
+
+- **YARN Resource Manager UI** → [http://localhost:9004](http://localhost:9004)  
+  Provides an overview of cluster resource usage, running applications, and job details.  
+
+- **NameNode UI** → [http://localhost:9870](http://localhost:9870)  
+  Displays HDFS file system details, block distribution, and overall health status.  
+
 
 
 
