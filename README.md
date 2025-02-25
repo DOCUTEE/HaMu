@@ -63,8 +63,6 @@ For example, to start a cluster with 1 master and 5 slaves (6 nodes total):
 ```sh
 .\start-cluster 6
 ```
-### **Step 4: Verify the Installation**  
-After step 3, you will see CLI of master container to interact with it.Start cluster by start-dfs.sh and check livenodes by hdfs dfsadmin -report
 
 ### **Step 4: Verify the Installation**  
 
@@ -79,6 +77,16 @@ start-dfs.sh
 hdfs dfsadmin -report
 ```
 📌 Expected Output:
+```sh
+
+-------------------------------------------------
+Live datanodes (5):
+
+Name: 172.21.0.5:9866 (minhquang-slave1.hadoop-network)
+Hostname: minhquang-slave1
+Decommission Status : Normal
+Configured Capacity: 1081101176832 (1006.85 GB)
+```
 
 If you see live DataNodes, your cluster is running successfully. 🚀
 
