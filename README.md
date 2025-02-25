@@ -77,16 +77,7 @@ start-dfs.sh
 hdfs dfsadmin -report
 ```
 📌 Expected Output:
-```sh
-
--------------------------------------------------
-Live datanodes (5):
-
-Name: 172.21.0.5:9866 (minhquang-slave1.hadoop-network)
-Hostname: minhquang-slave1
-Decommission Status : Normal
-Configured Capacity: 1081101176832 (1006.85 GB)
-```
+![Deme](https://github.com/user-attachments/assets/a79645b2-84bd-4f7e-aa7b-7bb5bf9474e5)
 
 If you see live DataNodes, your cluster is running successfully. 🚀
 
