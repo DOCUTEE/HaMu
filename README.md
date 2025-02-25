@@ -102,7 +102,14 @@ You can access the following web interfaces to monitor and manage your Hadoop cl
   Displays HDFS file system details, block distribution, and overall health status.  
 
 
+## 🎉 Contributors  
 
+Thanks to these wonderful people:  
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome! 🙌
 
 
     
