@@ -35,7 +35,52 @@ I hope **HaMu** helps you quickly set up a Hadoop multi-node cluster, making it 
 - Set the cluster owner's name.  
 - Interact with the cluster via CLI or Web UI.  
 
-## Installation
+## 🚀 Installation Guide  
+
+Follow these steps to install and run HaMu on your system.  
+
+### **Step 1: Clone the Repository**  
+First, download the HaMu repository to your local machine:  
+```sh
+git clone https://github.com/DOCUTEE/HaMu.git
+cd HaMu
+```
+
+### **Step 2: Build Docker Images (Optional)**  
+Building Docker images is required only for the first time or after making changes in the HaMu directory (such as modifying the owner name).
+> **⏳ Note:** The first build may take a few minutes as no cached layers exist.
+```sh
+.\build-image.bat
+```
+
+### **Step 3: Enjoy your Hadoop Cluster**  
+By default, running the command below will launch a Hadoop cluster with 3 nodes (1 master and 2 slaves):
+```sh
+.\start-cluster
+```
+If you want to customize the number of slave nodes, specify the total number of nodes (master + slaves) as an argument.
+For example, to start a cluster with 1 master and 5 slaves (6 nodes total):
+```sh
+.\start-cluster 6
+```
+### **Step 4: Verify the Installation**  
+After step 3, you will see CLI of master container to interact with it.Start cluster by start-dfs.sh and check livenodes by hdfs dfsadmin -report
+
+### **Step 4: Verify the Installation**  
+
+After **Step 3**, you will be inside the **master container's CLI**, where you can interact with the cluster.  
+
+1️⃣ **Start the HDFS services:**  
+```sh
+start-dfs.sh
+```
+2️⃣ **Check active DataNodes:**
+```sh
+hdfs dfsadmin -report
+```
+📌 Expected Output:
+
+If you see live DataNodes, your cluster is running successfully. 🚀
 
 
     
