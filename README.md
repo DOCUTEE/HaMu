@@ -1,6 +1,3 @@
-
-HaMu – Simplified Deployment for Hadoop Multi-Node Clusters
-
 🚀 HaMu is a tool for quickly deploying a fully containerized pseudo-distributed Hadoop cluster, making Hadoop setup faster and easier.
 
 ##📖 **My Story** *(can be ignored)* 
