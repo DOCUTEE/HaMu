@@ -1,5 +1,3 @@
-[![All Contributors](https://img.shields.io/github/all-contributors/DOCUTEE/HaMu?color=ee8449&style=flat-square)](#contributors)
-
 🚀 HaMu is a tool for quickly deploying a fully containerized pseudo-distributed Hadoop cluster, making Hadoop setup faster and easier.
 
 ##📖 **My Story** *(can be ignored)* 
