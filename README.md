@@ -47,8 +47,10 @@ cd HaMu
 ```
 
 ### **Step 2: Build Docker Images (Optional)**  
-Building Docker images is required only for the first time or after making changes in the HaMu directory (such as modifying the owner name).
-> **⏳ Note:** The first build may take a few minutes as no cached layers exist.
+Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)).  
+
+> **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
+
 ```sh
 .\build-image.bat
 ```
@@ -80,6 +82,23 @@ hdfs dfsadmin -report
 ![Deme](https://github.com/user-attachments/assets/a79645b2-84bd-4f7e-aa7b-7bb5bf9474e5)
 
 If you see live DataNodes, your cluster is running successfully. 🚀
+
+### Modify the Owner Name  
+If you need to change the owner name, run the `rename-owner.py` script and enter your new owner name when prompted.  
+
+> **⏳ Note:** If you want to check the current owner name, it is stored in `OwnerName.txt`.  
+
+```sh
+python rename-owner.py
+```
+
+
+
+
+
+
+
+
 
 
     
