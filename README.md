@@ -25,8 +25,6 @@ To address these issues, I decided to containerize the Hadoop system using **Doc
 
 - [@Quang Nguyen](https://github.com/DOCUTEE)
 
-## 
-
 ## ✨ Features  
 
 - Deploy a Hadoop multi-node cluster with a single command.  
