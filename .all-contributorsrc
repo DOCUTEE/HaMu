@@ -21,6 +21,4 @@
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "HaMu",
-  "projectOwner": "DOCUTEE"
 }
