@@ -145,3 +145,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Contact
+
+📧 Email: quangforwork1203@gmail.com  
+
+💬 My project still has many aspects that need improvement. I would greatly appreciate your feedback!
+
