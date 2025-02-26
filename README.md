@@ -6,7 +6,9 @@
 ## 📜 Table of Contents  
 - 📖 [My Story](#-my-story-feel-free-to-skip)  
 - 👥 [Authors](#-authors)  
-- ✨ [Features](#-features)  
+- ✨ [Features](#-features)
+- ✨ [OS support](#%EF%B8%8F-os-support) 
+- ✨ [Prerequisites](#-prerequisites)  
 - 🚀 [Installation Guide](#-installation-guide)  
 - 🔄 [Modify the Owner Name](#modify-the-owner-name)  
 - 🌐 [Interact with the Web UI](#-interact-with-the-web-ui)
@@ -42,6 +44,14 @@ To address these issues, I decided to containerize the Hadoop system using **Doc
 - Customize the number of slave nodes.  
 - [Set the cluster owner's name.](#modify-the-owner-name)
 - [Interact with the cluster via CLI or Web UI.](#-interact-with-the-web-ui)
+
+## 🖥️ **OS Support**  
+- 🪟 **Windows** (via WSL2 or Docker Desktop)  
+- 🐧 **Linux** (Ubuntu, CentOS, Debian, etc.) – ⏳ *Coming Soon*  
+
+## 📌 **Prerequisites** 
+- 🐳 **Docker**  
+- 🗃️ **Basic Knowledge of Hadoop**  
 
 ## 🚀 Installation Guide  
 
