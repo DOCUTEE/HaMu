@@ -21,6 +21,12 @@ def rename_user_in_all_files(root_folder, old_username, new_username):
             dirs.remove('.git')
         if '.gitignore' in dirs:
             dirs.remove('.gitignore')
+        if 'README.md' in dirs:
+            dirs.remove('README.md')
+        if 'LICENSE' in dirs:
+            dirs.remove('LICENSE')
+        if '.all-contributorsrc' in dirs:
+            dirs.remove('.all-contributorsrc')
         for file in files:
             file_path = os.path.join(root, file)
             rename_user_in_file(file_path, old_username, new_username)
