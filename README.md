@@ -104,7 +104,9 @@ If you see live DataNodes, your cluster is running successfully. 🚀
 ### Modify the Owner Name  
 If you need to change the owner name, run the `rename-owner.py` script and enter your new owner name when prompted.  
 
-> **⏳ Note:** If you want to check the current owner name, it is stored in `OwnerName.txt`.  
+> **⏳ Note:** If you want to check the current owner name, it is stored in `OwnerName.txt`.
+>
+> 📌 There are some limitations; you should use a name that is different from words related to the 'Hadoop' or 'Docker' syntax. For example, avoid names like 'hdfs', 'yarn', 'container', or 'docker-compose'.
 
 ```sh
 python rename-owner.py
