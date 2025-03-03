@@ -22,12 +22,16 @@ limitations under the License. See accompanying LICENSE file.
 		<name>dfs.replication</name>
 
 		<value>2</value>
+		<description>Default block replication. The actual number of replications can be specified when the file is created. The default is used if replication is not specified in create time.</description>
+
 	</property>
 	<property>
 
 		<name>dfs.namenode.name.dir</name>
 
 		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode</value>
+		<description>Determines where on the local filesystem the DFS name node should store the name table (fsimage). If this is a comma-delimited list of directories then the name table is replicated in all of the directories, for redundancy.</description>
+
 	</property>
 
 	<property>
@@ -35,6 +39,27 @@ limitations under the License. See accompanying LICENSE file.
 		<name>dfs.datanode.data.dir</name>
 
 		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode</value>
+        <description>Determines where on the local filesystem an DFS data node should store its blocks. If this is a comma-delimited list of directories then data will be stored in all named directories typically on different devices. Directories that do not exist are ignored.</description>
+
 	</property>
+
+	<property>
+    	<name>dfs.namenode.http-address</name>
+    	<value>minhquang-master:50070</value>  <!--Port NameNode -->
+  	</property>
+
+	<property>
+        <name>dfs.http.server.address</name>
+        <value>minhquang-master:50070</value>
+        <description>Address to bind to for HTTP requests.</description>
+    </property>
+	<property>
+		<name>dfs.namenode.rpc-address</name>
+		<value>minhquang-master:9000</value>  <!-- Address RPC  NameNode -->
+	</property>
+
+
+
+
 
 </configuration>

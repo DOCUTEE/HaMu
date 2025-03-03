@@ -70,4 +70,22 @@ limitations under the License. See accompanying LICENSE file.
 
 	</property>
 
+	<!-- Total memory available for each NodeManager (Reduce to 2GB or lower) -->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>2048</value>
+    </property>
+
+    <!-- Maximum memory a single container can use (Reduce to prevent excessive allocation) -->
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>2048</value>
+    </property>
+
+    <!-- Minimum memory a single container can request (Set lower for better resource utilization) -->
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>256</value>
+    </property>
+
 </configuration>
