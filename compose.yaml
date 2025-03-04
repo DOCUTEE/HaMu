@@ -3,7 +3,11 @@ services:
     image: hadoop-master1
     container_name: master
     hostname: minhquang-master
-
+    volumes:
+          - hdfs_namenode:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode
+          - hdfs_data:/user/hadoopminhquang
+          - ./data:/home/hadoopminhquang/data
+          - ./scripts:/home/hadoopminhquang/scripts
     ports:
       - "60070:50070"
       - "9004:9004"
@@ -19,7 +23,8 @@ services:
     image: hadoop-slave1
     container_name: slave1
     hostname: minhquang-slave1
-
+    volumes:
+          - hdfs_datanode1:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
@@ -28,7 +33,8 @@ services:
     image: hadoop-slave1
     container_name: slave2
     hostname: minhquang-slave2
-
+    volumes:
+          - hdfs_datanode2:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
@@ -37,3 +43,8 @@ networks:
   hadoop-net:
     driver: bridge
 
+volumes:
+  hdfs_namenode:
+  hdfs_data:
+  hdfs_datanode1:
+  hdfs_datanode2:

@@ -34,14 +34,7 @@ limitations under the License. See accompanying LICENSE file.
 
 	</property>
 
-	<property>
 
-		<name>dfs.datanode.data.dir</name>
-
-		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode</value>
-        <description>Determines where on the local filesystem an DFS data node should store its blocks. If this is a comma-delimited list of directories then data will be stored in all named directories typically on different devices. Directories that do not exist are ignored.</description>
-
-	</property>
 
 	<property>
     	<name>dfs.namenode.http-address</name>

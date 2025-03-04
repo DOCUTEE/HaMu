@@ -17,6 +17,10 @@ RUN dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/core-site.xml && \
     dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/hdfs-site.xml && \
     dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/yarn-site.xml && \
     dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/mapred-site.xml
+
+RUN mkdir -p /home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode && \
+    chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+
 # Format HDFS
 USER hadoopminhquang
 RUN hdfs namenode -format
