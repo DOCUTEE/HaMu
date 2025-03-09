@@ -1,4 +1,5 @@
 import os
+import json
 
 def rename_user_in_file(file_path, old_username, new_username):
     """Read a file, replace occurrences of the old username with the new one, and save changes."""
@@ -13,47 +14,48 @@ def rename_user_in_file(file_path, old_username, new_username):
     except Exception as e:
         print(f"Error processing file {file_path}: {e}")
 
-def rename_user_in_all_files(root_folder, old_username, new_username):
-    """Recursively search for files in the root directory and replace the old username."""
-    for root, dirs, files in os.walk(root_folder):
-        # Skip .git directory
-        if '.git' in dirs:
-            dirs.remove('.git')
-        if '.gitignore' in dirs:
-            dirs.remove('.gitignore')
-        if 'README.md' in dirs:
-            dirs.remove('README.md')
-        if 'LICENSE' in dirs:
-            dirs.remove('LICENSE')
-        if '.all-contributorsrc' in dirs:
-            dirs.remove('.all-contributorsrc')
-        for file in files:
-            file_path = os.path.join(root, file)
-            rename_user_in_file(file_path, old_username, new_username)
+def rename_user_in_all_files(root_folder, old_username, new_username, requiredFiles):
+    for path in requiredFiles:
+        file_path = os.path.join(root_folder, path)
+        rename_user_in_file(file_path, old_username, new_username)
 
-def get_old_username_from_file():
-    """Read the old username from OwnerName.txt."""
-    try:
-        with open("./OwnerName.txt", "r") as file:
-            return file.read().strip()
-    except FileNotFoundError:
-        print("Error: OwnerName.txt not found.")
-        return None
-    
+def CanReadAndWriteAllFiles(root_folder, requiredFiles):
+    for path in requiredFiles:
+        file_path = os.path.join(root_folder, path)
+        if not os.access(file_path, os.R_OK):
+            print(f"Error: Couldn't read file {file_path}")
+            return False
+        if not os.access(file_path, os.W_OK):
+            print(f"Error: Couldn't write to file {file_path}")
+            return False
+    return True
 
 def main():
     """Main function to get user input and start the renaming process."""
-    root_folder = os.getcwd()  # Get the current working directory
+    # load json file
+    with open('hamu-config.json') as f:
+        data = json.load(f)
+
+    requiredFiles = data['requiredFiles']
+
+    # get the root folder
+    root_folder = os.getcwd() 
     
-    old_username = get_old_username_from_file()
+    # get the old username
+    old_username = data['ownerName']
     
     if not old_username:
         print("Error: Couldn't retrieve the old username.")
         return  # Exit if the old username couldn't be retrieved
 
     new_username = input("Enter the new username: ").strip()
-
-    rename_user_in_all_files(root_folder, old_username, new_username)
+    
+    canAccess = CanReadAndWriteAllFiles(root_folder, requiredFiles)
+    print(canAccess)
+    if canAccess == False:
+        print("Error: Couldn't retrieve the new username.")
+        return
+    rename_user_in_all_files(root_folder, old_username, new_username, requiredFiles)
     print("Done!")
 
 if __name__ == "__main__":

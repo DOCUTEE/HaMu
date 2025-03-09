@@ -1,3 +1,6 @@
+networks:
+  hadoop-net:
+    driver: bridge
 services:
   master:
     image: hadoop-master1
@@ -14,89 +17,3 @@ services:
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  slave1:
-    image: hadoop-slave1
-    container_name: slave1
-    hostname: minhquang-slave1
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  slave2:
-    image: hadoop-slave1
-    container_name: slave2
-    hostname: minhquang-slave2
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave3:
-    image: hadoop-slave1
-    container_name: slave3
-    hostname: minhquang-slave3
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave4:
-    image: hadoop-slave1
-    container_name: slave4
-    hostname: minhquang-slave4
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave5:
-    image: hadoop-slave1
-    container_name: slave5
-    hostname: minhquang-slave5
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave6:
-    image: hadoop-slave1
-    container_name: slave6
-    hostname: minhquang-slave6
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave7:
-    image: hadoop-slave1
-    container_name: slave7
-    hostname: minhquang-slave7
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave8:
-    image: hadoop-slave1
-    container_name: slave8
-    hostname: minhquang-slave8
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave9:
-    image: hadoop-slave1
-    container_name: slave9
-    hostname: minhquang-slave9
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-  slave10:
-    image: hadoop-slave1
-    container_name: slave10
-    hostname: minhquang-slave10
-
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-networks:
-  hadoop-net:
-    driver: bridge
-
