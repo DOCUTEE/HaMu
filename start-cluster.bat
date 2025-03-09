@@ -1,54 +1,59 @@
 @echo off
+setlocal enabledelayedexpansion
 
 REM The default node number is 3
-set N=%1
-if "%N%"=="" set N=3
+set N=3
+if not "%1"=="" set N=%1
 
-REM Tính giá trị N-1 và lưu vào biến Nminus1
-set /a Nminus1=%N%-1
+REM Calculate N-1 and store in Nminus1
+set /A Nminus1=N-1
 
-REM Call the resize-number-slaves.bat with the number of slaves as an argument
+echo Resizing cluster to %Nminus1% slave nodes...
 call resize-number-slaves.bat %Nminus1%
-
-REM Create hadoop network
-docker network create --driver=bridge hadoop-network >nul 2>&1
-
-REM Start Hadoop master container
-echo start minhquang-master container...
-docker rm -f minhquang-master >nul 2>&1
-docker run ^
-    -p 9870:9870 ^
-    -p 9864:9864 ^
-    -p 8088:8088 ^
-    -p 8042:8042 ^
-    -p 9000-9006:9000-9006 ^
-    -itd ^
-    --net=hadoop-network ^
-    --name minhquang-master ^
-    --hostname minhquang-master ^
-    hadoop-master >nul 2>&1
-
-REM copy workers file to master container
-docker cp master\config\workers minhquang-master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
-
-REM convert workers from dos to unix
-docker exec minhquang-master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
-
-REM Start Hadoop slave containers
-set /a i=1
-:loop
-if %i% leq %N% (
-    echo start minhquang-slave%i% container...
-    docker rm -f minhquang-slave%i% >nul 2>&1
-    docker run -itd ^
-        --net=hadoop-network ^
-        --name minhquang-slave%i% ^
-        --hostname minhquang-slave%i% ^
-        hadoop-slave >nul 2>&1
-    set /a i=%i% + 1
-    goto loop
+if errorlevel 1 (
+    echo Failed to resize slaves. Exiting...
+    exit /b 1
 )
 
+echo Starting Docker Compose services...
+docker compose -f compose-dynamic.yaml up -d
+if errorlevel 1 (
+    echo Failed to start Docker Compose services. Exiting...
+    exit /b 1
+)
 
-REM Get into the Hadoop master container
-docker start -i minhquang-master
+REM Wait for all containers to be in 'running' state
+echo Waiting for all containers to be in 'running' state...
+:wait_for_containers
+for /f "tokens=*" %%i in ('docker compose ps --format "{{.State}}" ^| findstr /v "running"') do (
+    set STATUS=%%i
+)
+if defined STATUS (
+    echo Some containers are still starting. Waiting...
+    timeout /t 5 >nul
+    goto wait_for_containers
+)
+echo All containers are running!
+
+echo Copying workers file to master container...
+docker cp config-hadoop\master\config\workers master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
+if errorlevel 1 (
+    echo Failed to copy workers file. Exiting...
+    exit /b 1
+)
+
+echo Converting workers file to Unix format...
+docker exec master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
+if errorlevel 1 (
+    echo Failed to convert workers file. Exiting...
+    exit /b 1
+)
+
+echo Restarting the cluster...
+docker exec -it master /bin/bash -c "su - hadoopminhquang"
+if errorlevel 1 (
+    echo Failed to restart the cluster. Exiting...
+    exit /b 1
+)
+
+echo Cluster setup completed successfully!

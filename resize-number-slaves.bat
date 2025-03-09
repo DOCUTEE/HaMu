@@ -1,20 +1,47 @@
 @echo off
-REM N is the node number of the Hadoop cluster
-set N=%1
 
-REM Check if the user has provided the node number
-if "%N%"=="" (
-    echo Please specify the node number of hadoop cluster!
+REM Check if the parameter n is provided
+if "%1"=="" (
+    echo Usage: %0 ^<number_of_slaves^>
     exit /b 1
 )
 
-REM Change slaves file
-set /a i=1
-del master\config\workers
+set n=%1
 
-:loop
-if %i% leq %N% (
-    echo minhquang-slave%i% >> master\config\workers
-    set /a i=%i% + 1
-    goto loop
+REM Navigate to the config-hadoop/master directory
+cd config-hadoop\master\config || (
+    echo Directory not found
+    exit /b 1
 )
+
+REM Clear the old content of the workers file and add new content
+echo. > workers
+for /L %%i in (1,1,%n%) do (
+    echo minhquang-slave%%i >> workers
+)
+
+echo Updated workers file with %n% slaves.
+
+REM Navigate back to the root directory
+cd ..\..\..
+
+REM Copy compose.yaml to compose-dynamic.yaml (force)
+copy /Y compose.yaml compose-dynamic.yaml
+if errorlevel 1 (
+    echo Failed to copy compose.yaml. Exiting...
+    exit /b 1
+)
+
+REM Add slave services to compose-dynamic.yaml
+for /L %%i in (1,1,%n%) do (
+    echo. >> compose-dynamic.yaml
+    echo   slave%%i: >> compose-dynamic.yaml
+    echo     image: hadoop-slave1 >> compose-dynamic.yaml
+    echo     container_name: slave%%i >> compose-dynamic.yaml
+    echo     hostname: minhquang-slave%%i >> compose-dynamic.yaml
+    echo     networks: >> compose-dynamic.yaml
+    echo       - hadoop-net >> compose-dynamic.yaml
+    echo     command: /bin/bash -c "service ssh start; tail -f /dev/null" >> compose-dynamic.yaml
+)
+
+echo Updated compose-dynamic.yaml with %n% slave nodes.
