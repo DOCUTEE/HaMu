@@ -1,3 +1,5 @@
+
+
 cd config-hadoop
 
 # Build the images from compose file
