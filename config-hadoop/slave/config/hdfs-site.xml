@@ -23,19 +23,18 @@ limitations under the License. See accompanying LICENSE file.
 
 		<value>2</value>
 	</property>
+	<!-- <property>
+
+		<name>dfs.namenode.name.dir</name>
+
+		<value>/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/namenode</value>
+	</property> -->
 
 	<property>
 
 		<name>dfs.datanode.data.dir</name>
 
-		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode</value>
+		<value>/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode</value>
 	</property>
-
-	<!-- Specify the Master  for HDFS connections -->
-	<property>
-		<name>dfs.namenode.rpc-address</name>
-		<value>minhquang-master:9000</value> 
-	</property>
-
 
 </configuration>

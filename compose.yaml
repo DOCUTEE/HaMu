@@ -1,20 +1,20 @@
 services:
   master:
-    image: hadoop-master1
+    image: master-spark
     container_name: master
-    hostname: minhquang-master
+    hostname: quochuy026-master
     volumes:
-          - hdfs_namenode:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode
-          - hdfs_data:/user/hadoopminhquang
-          - ./data:/home/hadoopminhquang/data
-          - ./scripts:/home/hadoopminhquang/scripts
+      - hdfs_namenode:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/namenode
+      - hdfs_data:/user/hadoopquochuy026
+      - ./data:/home/hadoopquochuy026/data
+      - ./scripts:/home/hadoopquochuy026/scripts
     ports:
-      - "60070:50070"
-      - "9004:9004"
-      - "9870:9870"
-      - "9864:9864"
-      - "8042:8042"
-      - "8088:8088"
+      - "9004:9004"   # 
+      - "9870:9870"   # HDFS NameNode UI
+      - "8088:8088"   # YARN ResourceManager UI
+      - "9000:9000"   # HDFS RPC
+      - "7077:7077"   # Spark Master RPC
+      - "8080:8080"   # Spark Master Web UI
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
@@ -22,9 +22,13 @@ services:
   slave1:
     image: hadoop-slave1
     container_name: slave1
-    hostname: minhquang-slave1
+    hostname: quochuy026-slave1
+    ports:
+      - "9864:9864"   # HDFS DataNode UI
+      - "8042:8042"   # YARN NodeManager UI
+      - "8081:8081"   # Spark Worker UI
     volumes:
-          - hdfs_datanode1:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+      - hdfs_datanode1:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
@@ -32,12 +36,60 @@ services:
   slave2:
     image: hadoop-slave1
     container_name: slave2
-    hostname: minhquang-slave2
+    hostname: quochuy026-slave2
+    ports:
+      - "9865:9864"   # HDFS DataNode UI
+      - "8043:8042"   # YARN NodeManager UI
+      - "8082:8081"   # Spark Worker UI (khác với slave1 để tránh trùng)
     volumes:
-          - hdfs_datanode2:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+      - hdfs_datanode2:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
+  
+  slave3:
+    image: hadoop-slave1
+    container_name: slave3
+    hostname: quochuy026-slave3
+    ports:
+      - "9866:9864"   # HDFS DataNode UI
+      - "8044:8042"   # YARN NodeManager UI
+      - "8083:8081"   # Spark Worker UI (khác với slave1 để tránh trùng)
+    volumes:
+      - hdfs_datanode3:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+   
+  slave4:
+    image: hadoop-slave1
+    container_name: slave4
+    hostname: quochuy026-slave4
+    ports:
+      - "9867:9864"   # HDFS DataNode UI
+      - "8045:8042"   # YARN NodeManager UI
+      - "8084:8081"   # Spark Worker UI (khác với slave1 để tránh trùng)
+    volumes:
+      - hdfs_datanode4:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  slave5:
+    image: hadoop-slave1
+    container_name: slave5
+    hostname: quochuy026-slave5
+    ports:
+      - "9868:9864"   # HDFS DataNode UI
+      - "8046:8042"   # YARN NodeManager UI
+      - "8085:8081"   # Spark Worker UI (khác với slave1 để tránh trùng)
+    volumes:
+      - hdfs_datanode5:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/datanode
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
 
 networks:
   hadoop-net:
@@ -48,3 +100,6 @@ volumes:
   hdfs_data:
   hdfs_datanode1:
   hdfs_datanode2:
+  hdfs_datanode3:
+  hdfs_datanode4:
+  hdfs_datanode5:

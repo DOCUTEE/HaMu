@@ -20,4 +20,13 @@ services:
     image: hadoop-slave1
     depends_on:
       - hadoop-base
+  
+  
+  hadoop-master-spark:
+    build: 
+      context: ./spark
+      dockerfile: Dockerfile
+    image: master-spark
+    depends_on:
+      - hadoop-master
     
