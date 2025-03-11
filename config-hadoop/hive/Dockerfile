@@ -13,8 +13,6 @@ COPY .bashrc /home/hadoopquochuy026/.bashrc
 COPY hive-site.xml /home/hadoopquochuy026/hive/conf/ 
 COPY hive-env.sh /home/hadoopquochuy026/hive/conf/
 
-RUN bash -c "/home/hadoopquochuy026/hive/bin/schematool -initSchema -dbType derby"
-
 
 USER root
 RUN dos2unix /home/hadoopquochuy026/.bashrc && \
