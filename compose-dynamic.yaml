@@ -33,3 +33,27 @@ services:
     networks: 
       - hadoop-net 
     command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+ 
+  slave3: 
+    image: hadoop-slave1 
+    container_name: slave3 
+    hostname: minhquang-slave3 
+    networks: 
+      - hadoop-net 
+    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+ 
+  slave4: 
+    image: hadoop-slave1 
+    container_name: slave4 
+    hostname: minhquang-slave4 
+    networks: 
+      - hadoop-net 
+    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+ 
+  slave5: 
+    image: hadoop-slave1 
+    container_name: slave5 
+    hostname: minhquang-slave5 
+    networks: 
+      - hadoop-net 
+    command: /bin/bash -c "service ssh start; tail -f /dev/null" 

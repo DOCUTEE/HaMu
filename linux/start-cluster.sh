@@ -9,7 +9,7 @@ N=${1:-3}
 Nminus1=$((N-1))
 
 echo "Resizing cluster to $Nminus1 slave nodes..."
-./resize-number-slaves.sh $Nminus1
+./linux/resize-number-slaves.sh $Nminus1
 if [ $? -ne 0 ]; then
     echo "Failed to resize slaves. Exiting..."
     exit 1

@@ -9,7 +9,7 @@ REM Calculate N-1 and store in Nminus1
 set /A Nminus1=N-1
 
 echo Resizing cluster to %Nminus1% slave nodes...
-call resize-number-slaves.bat %Nminus1%
+call windows/resize-number-slaves.bat %Nminus1%
 if errorlevel 1 (
     echo Failed to resize slaves. Exiting...
     exit /b 1
