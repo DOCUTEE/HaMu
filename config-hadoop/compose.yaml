@@ -29,4 +29,13 @@ services:
     image: master-spark
     depends_on:
       - hadoop-master
+
+  hadoop-master-hive:
+    build:
+      context: ./hive
+      dockerfile: Dockerfile
+    image: master-spark-hive
+    depends_on:
+      - hadoop-master-spark
+
     

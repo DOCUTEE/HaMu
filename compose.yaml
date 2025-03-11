@@ -1,11 +1,10 @@
 services:
   master:
-    image: master-spark
+    image: master-spark-hive
     container_name: master
     hostname: quochuy026-master
     volumes:
       - hdfs_namenode:/home/hadoopquochuy026/hadoop/hadoop_data/hdfs/namenode
-      - hdfs_data:/user/hadoopquochuy026
       - ./data:/home/hadoopquochuy026/data
       - ./scripts:/home/hadoopquochuy026/scripts
     ports:
@@ -97,7 +96,6 @@ networks:
 
 volumes:
   hdfs_namenode:
-  hdfs_data:
   hdfs_datanode1:
   hdfs_datanode2:
   hdfs_datanode3:
