@@ -1,6 +1,6 @@
 services:
   master:
-    image: master-spark-hive
+    image: master-spark-hive-pig
     container_name: master
     hostname: quochuy026-master
     volumes:

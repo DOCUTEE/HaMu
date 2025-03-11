@@ -37,5 +37,13 @@ services:
     image: master-spark-hive
     depends_on:
       - hadoop-master-spark
+  
+  hadoop-master-pig:
+    build:
+      context: ./pig
+      dockerfile: Dockerfile
+    image: master-spark-hive-pig
+    depends_on:
+      - hadoop-master-hive
 
     
