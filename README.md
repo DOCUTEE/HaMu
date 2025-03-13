@@ -18,7 +18,7 @@
 ## 3️⃣ Build Docker Images 🏷️  
 - Move to the Hadoop config directory:  
   ```bash
-  cd HaMu/config-hadoop
+  cd config-hadoop
   ```
 - Build the images:  
   ```bash
