@@ -27,6 +27,14 @@ services:
     image: hdsphere-hive
     depends_on:
       - hdsphere-pig
+
+  hdsphere-spark:
+    build: 
+      context: ../
+      dockerfile: services/spark/Dockerfile
+    image: hdsphere-spark
+    depends_on:
+      - hdsphere-hive
   hdsphere-slave:
     build: 
       context: ./slave

@@ -135,3 +135,8 @@ export HIVE_HOME=/home/hadoopquochuy026/hive
 export PATH=$PATH:$HIVE_HOME/bin
 export CLASSPATH=$CLASSPATH:/home/hadoopquochuy026/hadoop/lib/*
 export CLASSPATH=$CLASSPATH:/home/hadoopquochuy026/hive/lib/*
+
+
+export SPARK_HOME=/home/hadoopquochuy026/spark
+export PATH="$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH"
+export SPARK_DIST_CLASSPATH="$(hadoop classpath)"

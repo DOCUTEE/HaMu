@@ -3,7 +3,7 @@ networks:
     driver: bridge
 services:
   hdsphere-master:
-    image: hdsphere-hive
+    image: hdsphere-spark
     container_name: hdsphere-master
     hostname: quochuy026-master
 
