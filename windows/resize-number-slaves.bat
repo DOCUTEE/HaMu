@@ -17,7 +17,7 @@ cd config-hadoop\master\config || (
 REM Clear the old content of the workers file and add new content
 echo. > workers
 for /L %%i in (1,1,%n%) do (
-    echo minhquang-slave%%i >> workers
+    echo quochuy026-slave%%i >> workers
 )
 
 echo Updated workers file with %n% slaves.
@@ -35,10 +35,10 @@ if errorlevel 1 (
 REM Add slave services to compose-dynamic.yaml
 for /L %%i in (1,1,%n%) do (
     echo. >> compose-dynamic.yaml
-    echo   slave%%i: >> compose-dynamic.yaml
-    echo     image: hadoop-slave1 >> compose-dynamic.yaml
-    echo     container_name: slave%%i >> compose-dynamic.yaml
-    echo     hostname: minhquang-slave%%i >> compose-dynamic.yaml
+    echo   hdsphere-slave%%i: >> compose-dynamic.yaml
+    echo     image: hdsphere-slave >> compose-dynamic.yaml
+    echo     container_name: hdsphere-slave%%i >> compose-dynamic.yaml
+    echo     hostname: quochuy026-slave%%i >> compose-dynamic.yaml
     echo     networks: >> compose-dynamic.yaml
     echo       - hadoop-net >> compose-dynamic.yaml
     echo     command: /bin/bash -c "service ssh start; tail -f /dev/null" >> compose-dynamic.yaml
