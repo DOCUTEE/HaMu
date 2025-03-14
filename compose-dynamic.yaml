@@ -2,8 +2,8 @@ networks:
   hadoop-net:
     driver: bridge
 services:
-  master:
-    image: hdsphere-master
+  hdsphere-master:
+    image: hdsphere-pig
     container_name: hdsphere-master
     hostname: quochuy026-master
 
@@ -29,38 +29,6 @@ services:
     image: hdsphere-slave
     container_name: hdsphere-slave2
     hostname: quochuy026-slave2
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave3:
-    image: hdsphere-slave
-    container_name: hdsphere-slave3
-    hostname: quochuy026-slave3
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave4:
-    image: hdsphere-slave
-    container_name: hdsphere-slave4
-    hostname: quochuy026-slave4
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave5:
-    image: hdsphere-slave
-    container_name: hdsphere-slave5
-    hostname: quochuy026-slave5
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave6:
-    image: hdsphere-slave
-    container_name: hdsphere-slave6
-    hostname: quochuy026-slave6
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"

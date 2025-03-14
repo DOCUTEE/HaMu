@@ -2,8 +2,8 @@ networks:
   hadoop-net:
     driver: bridge
 services:
-  master:
-    image: hdsphere-master
+  hdsphere-master:
+    image: hdsphere-pig
     container_name: hdsphere-master
     hostname: quochuy026-master
 
