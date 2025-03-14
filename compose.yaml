@@ -3,9 +3,9 @@ networks:
     driver: bridge
 services:
   master:
-    image: hadoop-master1
-    container_name: master
-    hostname: minhquang-master
+    image: hdsphere-master
+    container_name: hdsphere-master
+    hostname: quochuy026-master
 
     ports:
       - "60070:50070"

@@ -35,7 +35,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.scheduler.address</name>
 
-		<value>minhquang-master:9002</value>
+		<value>quochuy026-master:9002</value>
 
 	</property>
 
@@ -43,7 +43,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.address</name>
 
-		<value>minhquang-master:9003</value>
+		<value>quochuy026-master:9003</value>
 
 	</property>
 
@@ -51,7 +51,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.webapp.address</name>
 
-		<value>minhquang-master:9004</value>
+		<value>quochuy026-master:9004</value>
 
 	</property>
 
@@ -59,7 +59,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.resource-tracker.address</name>
 
-		<value>minhquang-master:9005</value>
+		<value>quochuy026-master:9005</value>
 
 	</property>
 
@@ -67,7 +67,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>yarn.resourcemanager.admin.address</name>
 
-		<value>minhquang-master:9006</value>
+		<value>quochuy026-master:9006</value>
 
 	</property>
 	<property>

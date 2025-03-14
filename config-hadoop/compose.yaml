@@ -1,23 +1,23 @@
 services:
-  hadoop-base:
+  hdsphere-base:
     build: 
       context: ./hadoop-base
       dockerfile: Dockerfile
-    image: hadoop-base1
+    image: hdsphere-base
 
-  hadoop-master:
+  hdsphere-master:
     build: 
       context: ./master
       dockerfile: Dockerfile
-    image: hadoop-master1
+    image: hdsphere-master
     depends_on:
-      - hadoop-base
+      - hdsphere-base
     
-  hadoop-slave:
+  hdsphere-slave:
     build: 
       context: ./slave
       dockerfile: Dockerfile
-    image: hadoop-slave1
+    image: hdsphere-slave
     depends_on:
-      - hadoop-base
+      - hdsphere-base
     

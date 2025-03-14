@@ -3,9 +3,9 @@ networks:
     driver: bridge
 services:
   master:
-    image: hadoop-master1
-    container_name: master
-    hostname: minhquang-master
+    image: hdsphere-master
+    container_name: hdsphere-master
+    hostname: quochuy026-master
 
     ports:
       - "60070:50070"
@@ -17,43 +17,51 @@ services:
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
- 
-  slave1: 
-    image: hadoop-slave1 
-    container_name: slave1 
-    hostname: minhquang-slave1 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave2: 
-    image: hadoop-slave1 
-    container_name: slave2 
-    hostname: minhquang-slave2 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave3: 
-    image: hadoop-slave1 
-    container_name: slave3 
-    hostname: minhquang-slave3 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave4: 
-    image: hadoop-slave1 
-    container_name: slave4 
-    hostname: minhquang-slave4 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave5: 
-    image: hadoop-slave1 
-    container_name: slave5 
-    hostname: minhquang-slave5 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+  hdsphere-slave1:
+    image: hdsphere-slave
+    container_name: hdsphere-slave1
+    hostname: quochuy026-slave1
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave2:
+    image: hdsphere-slave
+    container_name: hdsphere-slave2
+    hostname: quochuy026-slave2
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave3:
+    image: hdsphere-slave
+    container_name: hdsphere-slave3
+    hostname: quochuy026-slave3
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave4:
+    image: hdsphere-slave
+    container_name: hdsphere-slave4
+    hostname: quochuy026-slave4
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave5:
+    image: hdsphere-slave
+    container_name: hdsphere-slave5
+    hostname: quochuy026-slave5
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave6:
+    image: hdsphere-slave
+    container_name: hdsphere-slave6
+    hostname: quochuy026-slave6
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+

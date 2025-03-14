@@ -36,21 +36,21 @@ if defined STATUS (
 echo All containers are running!
 
 echo Copying workers file to master container...
-docker cp config-hadoop\master\config\workers master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
+docker cp config-hadoop\master\config\workers hdsphere-master:/home/hadoopquochuy026/hadoop/etc/hadoop/workers
 if errorlevel 1 (
     echo Failed to copy workers file. Exiting...
     exit /b 1
 )
 
 echo Converting workers file to Unix format...
-docker exec master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
+docker exec -it hdsphere-master dos2unix /home/hadoopquochuy026/hadoop/etc/hadoop/workers
 if errorlevel 1 (
     echo Failed to convert workers file. Exiting...
     exit /b 1
 )
 
 echo Restarting the cluster...
-docker exec -it master /bin/bash -c "su - hadoopminhquang"
+docker exec -it hdsphere-master /bin/bash -c "su - hadoopquochuy026"
 if errorlevel 1 (
     echo Failed to restart the cluster. Exiting...
     exit /b 1
