@@ -130,3 +130,8 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 export PIG_HOME=/home/hadoopquochuy026/pig
 export PATH=$PATH:$PIG_HOME/bin
 export PIG_CLASSPATH=$HADOOP_CONF_DIR
+
+export HIVE_HOME=/home/hadoopquochuy026/hive
+export PATH=$PATH:$HIVE_HOME/bin
+export CLASSPATH=$CLASSPATH:/home/hadoopquochuy026/hadoop/lib/*
+export CLASSPATH=$CLASSPATH:/home/hadoopquochuy026/hive/lib/*

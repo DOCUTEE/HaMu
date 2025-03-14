@@ -20,7 +20,13 @@ services:
     image: hdsphere-pig
     depends_on:
       - hdsphere-master
-      
+  hdsphere-hive:
+    build: 
+      context: ../
+      dockerfile: services/hive/Dockerfile
+    image: hdsphere-hive
+    depends_on:
+      - hdsphere-pig
   hdsphere-slave:
     build: 
       context: ./slave
