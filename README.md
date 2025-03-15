@@ -1,14 +1,16 @@
+ 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 # 🚀 HadoopSphere
-A fully containerized **Hadoop, Spark, Hive, and Pig** environment for quick and efficient Big Data processing.  
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)  
+A fully containerized **Hadoop, Spark, Hive, and Pig** environment for quick and efficient Big Data processing. 
 
 ## 🐜 Table of Contents  
 - 📚 [My Story](#-my-story-feel-free-to-skip)  
 - 👥 [Authors](#-authors)  
 - ✨ [Features](#-features)  
 - 🔧 [Tech Stack](#-tech-stack)  
-- 🎥 [OS Support](#-os-support)  
+- 💻 [OS Support](#-os-support)  
 - 📌 [Prerequisites](#-prerequisites)  
 - 🚀 [Installation Guide](#-installation-guide)  
 - 🔄 [Modify the Owner Name](#-modify-the-owner-name)  
@@ -28,7 +30,7 @@ Setting up a **Hadoop cluster** manually is frustrating, especially when integra
 
 ## 👥 **Authors**  
 - [@Quang Nguyen](https://github.com/DOCUTEE) *(Original Author)*  
-- [@Huy Nguyen](https://github.com/huy-dataguy) *(Extended with Spark, Hive, Pig)*  
+- [@Quoc Huy Nguyen](https://github.com/huy-dataguy) *(Extended with Spark, Hive, Pig)*  
 
 ---
 
@@ -51,15 +53,15 @@ Setting up a **Hadoop cluster** manually is frustrating, especially when integra
 
 ---
 
-## 🎥 **OS Support**  
-- 🪠 **Windows** (via WSL2 or Docker Desktop)  
-- 🐛 **Linux** (Ubuntu, CentOS, Debian)  
+## 🖥️ **OS Support**  
+- 🪟 **Windows** (via WSL2 or Docker Desktop)  
+- 🐧 **Linux** (Ubuntu, CentOS, Debian)  
 
 ---
 
 ## 📌 **Prerequisites**  
-- 💪 **Docker**  
-- 📂 **Basic Knowledge of Hadoop, Spark, Hive, Pig**  
+- 🐳 **Docker**  
+- 🗃️ **Basic Knowledge of Hadoop, Spark, Hive, Pig**  
 
 ---
 
@@ -72,13 +74,16 @@ cd HadoopShere
 ```
 
 ### **Step 2: Build Docker Images**  
+Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)). Make sure Docker is running before proceeding.
 
-#### 🪠 **For Windows**  
+> **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
+
+#### 🪟 **For Windows**  
 ```sh
 .\windows\build-image.bat
 ```
 
-#### 🐬 **For Linux**  
+#### 🐧 **For Linux**  
 ```sh
 ./linux/build-image.sh
 ```
@@ -87,12 +92,12 @@ cd HadoopShere
 
 ### **Step 3: Start the Cluster**  
 
-#### 🪠 **For Windows**  
+#### 🪟 **For Windows**  
 ```sh
 .\windows\start-cluster.bat
 ```
 
-#### 🐬 **For Linux**  
+#### 🐧 **For Linux**  
 ```sh
 ./linux/start-cluster.sh
 ```
@@ -101,19 +106,33 @@ cd HadoopShere
 
 To start a cluster with **1 master and 5 slaves**:  
 ```sh
-./linux/start-cluster.sh 6    # Linux  
-.\windows\start-cluster.bat 6 # Windows  
+./linux/start-cluster.sh 6    # 🐧 Linux  
+.\windows\start-cluster.bat 6 # 🪟 Windows  
 ```
 
 ---
 
 ### **Step 4: Verify the Installation**  
 
-After starting the cluster, access the **master container** and run the following commands:  
+After **Step 3**, you will be inside the **master container's CLI**, where you can interact with the cluster.
 
+
+💡 **Start the HDFS services:**  
+```sh
+start-dfs.sh
+```
 💡 **Check HDFS Nodes**  
 ```sh
 hdfs dfsadmin -report
+```
+
+💡 **Start the YARN services:**  
+```sh
+start-yarn.sh
+```
+💡 **Check YARN Nodes**  
+```sh
+yarn node -list
 ```
 
 💡 **Check Spark Cluster**  
@@ -123,29 +142,40 @@ spark-shell
 
 💡 **Check Hive Metastore**  
 ```sh
-schematool -dbType derby -info
+hive
 ```
 
 💡 **Run a Pig Script**  
 ```sh
 pig -x mapreduce
 ```
+
+📌 Expected Output:
+![Deme](https://github.com/user-attachments/assets/a79645b2-84bd-4f7e-aa7b-7bb5bf9474e5)
+
+If you see live DataNodes, your cluster is running successfully. 🚀
+
 ---
 
 ## 🔄 **Modify the Owner Name**  
-To change the cluster owner's username, run:  
+If you need to change the owner name, run the `rename-owner.py` script and enter your new owner name when prompted.  
+
+> **⏳ Note:** If you want to check the current owner name, it is stored in `OwnerName.txt`.
+>
+> 📌 There are some limitations; you should use a name that is different from words related to the 'Hadoop' or 'Docker' syntax. For example, avoid names like 'hdfs', 'yarn', 'container', or 'docker-compose'.
+
 ```sh
 python rename-owner.py
 ```
-
 ---
 
 ## 🌐 **Interact with the Web UI**  
 
-🔹 **Hadoop NameNode UI** → [http://localhost:9870](http://localhost:9870)  
+🔹 **Hadoop NameNode UI** → [http://localhost:9870](http://localhost:9870)
+    Provides an overview of cluster resource usage, running applications, and job details.   
 🔹 **YARN Resource Manager UI** → [http://localhost:8088](http://localhost:8088)  
 🔹 **Spark UI** → [http://localhost:4040](http://localhost:4040)  
-
+    Displays HDFS file system details, block distribution, and overall health status.
 ---
 
 ## ✨ **Contributors**  
@@ -153,7 +183,7 @@ python rename-owner.py
 | Contributor | Role |
 |-------------|------|
 | [@Quang Nguyen](https://github.com/DOCUTEE) | Original HaMu Creator |
-| [@Huy Nguyen](https://github.com/huy-dataguy) | Spark, Hive, Pig Integration |
+| [@Quoc Huy Nguyen](https://github.com/huy-dataguy) | Spark, Hive, Pig Integration |
 
 ---
 
