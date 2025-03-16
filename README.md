@@ -169,22 +169,43 @@ python rename-owner.py
 ```
 ---
 
-## 🌐 **Interact with the Web UI**  
+### 🌐 Interact with the Web UI  
 
-🔹 **Hadoop NameNode UI** → [http://localhost:9870](http://localhost:9870)
-    Provides an overview of cluster resource usage, running applications, and job details.   
-🔹 **YARN Resource Manager UI** → [http://localhost:8088](http://localhost:8088)  
-🔹 **Spark UI** → [http://localhost:4040](http://localhost:4040)  
-    Displays HDFS file system details, block distribution, and overall health status.
+You can access the following web interfaces to monitor and manage your Hadoop cluster:  
+
+- **YARN Resource Manager UI** → [http://localhost:9004](http://localhost:9004)  
+  Provides an overview of cluster resource usage, running applications, and job details.  
+
+- **NameNode UI** → [http://localhost:9870](http://localhost:9870)  
+  Displays HDFS file system details, block distribution, and overall health status.  
+
 ---
 
-## ✨ **Contributors**  
+## Contributors ✨
 
-| Contributor | Role |
-|-------------|------|
-| [@Quang Nguyen](https://github.com/DOCUTEE) | Original HaMu Creator |
-| [@Quoc Huy Nguyen](https://github.com/huy-dataguy) | Spark, Hive, Pig Integration |
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 ---
 
 ## 📞 **Contact**  
