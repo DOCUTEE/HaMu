@@ -10,19 +10,19 @@ A fully containerized **Hadoop, Spark, Hive, and Pig** environment for quick and
 - 👥 [Authors](#-authors)  
 - ✨ [Features](#-features)  
 - 🔧 [Tech Stack](#-tech-stack)  
-- 💻 [OS Support](#-os-support)  
+- 💻 [OS support](#%EF%B8%8F-os-support) 
 - 📌 [Prerequisites](#-prerequisites)  
 - 🚀 [Installation Guide](#-installation-guide)  
 - 🔄 [Modify the Owner Name](#-modify-the-owner-name)  
 - 🌐 [Interact with the Web UI](#-interact-with-the-web-ui)  
-- ✨ [Contributors](#-contributors-)  
+- ✨ [Contributors](#-contributors)  
 - 📞 [Contact](#-contact)  
 
 ---
 
 ## 📚 **My Story** *(feel free to skip)*  
 
-Setting up a **Hadoop cluster** manually is frustrating, especially when integrating **Spark, Hive, and Pig**. My friend and I initially developed **HaMu** for a simple Hadoop deployment using Docker, and I extended it further by adding **Spark, Hive, and Pig** for full Big Data analytics support.  
+Setting up a **Hadoop cluster** manually is frustrating, especially when integrating **Spark, Hive, and Pig**. My friend and I initially developed [**HaMu**](https://github.com/DOCUTEE/HaMu) for a simple Hadoop deployment using Docker, and I extended it further by adding **Spark, Hive, and Pig** for full Big Data analytics support.  
 
 💡 I hope **HadoopSphere** helps you quickly set up a Big Data environment for learning and development! 🚀  
 
@@ -70,11 +70,11 @@ Setting up a **Hadoop cluster** manually is frustrating, especially when integra
 ### **Step 1: Clone the Repository**  
 ```sh
 git clone https://github.com/huy-dataguy/HadoopSphere.git
-cd HadoopShere
+cd HadoopSphere
 ```
 
 ### **Step 2: Build Docker Images**  
-Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)). Make sure Docker is running before proceeding.
+Building Docker images is required only for the first time or after making changes in the HadoopSphere directory (such as [modifying the owner name](#-modify-the-owner-name)). Make sure Docker is running before proceeding.
 
 > **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
 
@@ -126,15 +126,6 @@ start-dfs.sh
 hdfs dfsadmin -report
 ```
 
-💡 **Start the YARN services:**  
-```sh
-start-yarn.sh
-```
-💡 **Check YARN Nodes**  
-```sh
-yarn node -list
-```
-
 💡 **Check Spark Cluster**  
 ```sh
 spark-shell
@@ -181,31 +172,11 @@ You can access the following web interfaces to monitor and manage your Hadoop cl
 
 ---
 
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tfoot>
-    <tr>
-      <td align="center" size="13px" colspan="7">
-        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
-          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
-        </img>
-      </td>
-    </tr>
-  </tfoot>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+- This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 ---
 
 ## 📞 **Contact**  
