@@ -13,42 +13,42 @@ RUN apt-get update && apt-get upgrade -y && \
 
 # Set environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV HADOOP_HOME=/home/hadoopminhquang/hadoop
+ENV HADOOP_HOME=/home/hadoopquochuy026/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin
 
-# Create user hadoopminhquang
-RUN adduser --disabled-password --gecos "" hadoopminhquang && \
-    echo "hadoopminhquang:hadoopminhquang" | chpasswd && \
-    usermod -aG sudo hadoopminhquang && \
-    echo "hadoopminhquang ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+# Create user hadoopquochuy026
+RUN adduser --disabled-password --gecos "" hadoopquochuy026 && \
+    echo "hadoopquochuy026:hadoopquochuy026" | chpasswd && \
+    usermod -aG sudo hadoopquochuy026 && \
+    echo "hadoopquochuy026 ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Install Hadoop
-USER hadoopminhquang
+USER hadoopquochuy026
 
-WORKDIR /home/hadoopminhquang
+WORKDIR /home/hadoopquochuy026
 RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz && \
     tar -xzf hadoop-3.4.1.tar.gz && \
     mv hadoop-3.4.1 hadoop && \
     rm hadoop-3.4.1.tar.gz
 
 # Set JAVA_HOME in hadoop-env.sh
-RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopminhquang/hadoop/etc/hadoop/hadoop-env.sh
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> /home/hadoopquochuy026/hadoop/etc/hadoop/hadoop-env.sh
     
 
 # Copy Hadoop configuration files
-COPY .bashrc /home/hadoopminhquang/.bashrc
+COPY .bashrc /home/hadoopquochuy026/.bashrc
 
-RUN mkdir -p /home/hadoopminhquang/.ssh && \
-    ssh-keygen -t rsa -P '' -f /home/hadoopminhquang/.ssh/id_rsa && \
-    cat /home/hadoopminhquang/.ssh/id_rsa.pub >> /home/hadoopminhquang/.ssh/authorized_keys && \
-    chmod 600 /home/hadoopminhquang/.ssh/authorized_keys && \
-    chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/.ssh
+RUN mkdir -p /home/hadoopquochuy026/.ssh && \
+    ssh-keygen -t rsa -P '' -f /home/hadoopquochuy026/.ssh/id_rsa && \
+    cat /home/hadoopquochuy026/.ssh/id_rsa.pub >> /home/hadoopquochuy026/.ssh/authorized_keys && \
+    chmod 600 /home/hadoopquochuy026/.ssh/authorized_keys && \
+    chown -R hadoopquochuy026:hadoopquochuy026 /home/hadoopquochuy026/.ssh
 
 # Add permission to ssh folder and keys
 USER root
 
 # Convert files to Unix format
-RUN dos2unix /home/hadoopminhquang/.bashrc 
+RUN dos2unix /home/hadoopquochuy026/.bashrc 
 
 # Expose ports
-EXPOSE 9000 50070 9001 9002 9003 9004 9005 9006 9870 9864 8088 8042
+EXPOSE 9000 50070 9001 9002 9003 9004 9005 9006 9870 9864 8088 8042 8080 7070 4040

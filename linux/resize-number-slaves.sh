@@ -16,7 +16,7 @@ cd config-hadoop/master/config || { echo "Directory not found"; exit 1; }
 # Clear the old content of the workers file and add new content
 > workers
 for ((i=1; i<=n; i++)); do
-    echo "minhquang-slave$i" >> workers
+    echo "quochuy026-slave$i" >> workers
 done
 
 echo "Updated workers file with $n slaves."
@@ -34,10 +34,10 @@ fi
 # Add slave services to compose-dynamic.yaml
 for ((i=1; i<=n; i++)); do
     cat <<EOL >> compose-dynamic.yaml
-  slave$i:
-    image: hadoop-slave1
-    container_name: slave$i
-    hostname: minhquang-slave$i
+  hdsphere-slave$i:
+    image: hdsphere-slave
+    container_name: hdsphere-slave$i
+    hostname: quochuy026-slave$i
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"

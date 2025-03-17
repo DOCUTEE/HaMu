@@ -22,7 +22,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>hadoop.tmp.dir</name>
 
-		<value>/home/hadoopminhquang/tmp</value>
+		<value>/home/hadoopquochuy026/tmp</value>
 
 		<description>Temporary Directory.</description>
 
@@ -32,7 +32,7 @@ limitations under the License. See accompanying LICENSE file.
 
 		<name>fs.defaultFS</name>
 
-		<value>hdfs://minhquang-master:9000</value>
+		<value>hdfs://quochuy026-master:9000</value>
 
 		<description>Use HDFS as file storage engine</description>
 

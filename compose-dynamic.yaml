@@ -2,10 +2,10 @@ networks:
   hadoop-net:
     driver: bridge
 services:
-  master:
-    image: hadoop-master1
-    container_name: master
-    hostname: minhquang-master
+  hdsphere-master:
+    image: hdsphere-spark
+    container_name: hdsphere-master
+    hostname: quochuy026-master
 
     ports:
       - "60070:50070"
@@ -14,46 +14,25 @@ services:
       - "9864:9864"
       - "8042:8042"
       - "8088:8088"
+      - "8080:8080"
+      - "7070:7070"
+      - "4040:4040"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
- 
-  slave1: 
-    image: hadoop-slave1 
-    container_name: slave1 
-    hostname: minhquang-slave1 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave2: 
-    image: hadoop-slave1 
-    container_name: slave2 
-    hostname: minhquang-slave2 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave3: 
-    image: hadoop-slave1 
-    container_name: slave3 
-    hostname: minhquang-slave3 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave4: 
-    image: hadoop-slave1 
-    container_name: slave4 
-    hostname: minhquang-slave4 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave5: 
-    image: hadoop-slave1 
-    container_name: slave5 
-    hostname: minhquang-slave5 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+  hdsphere-slave1:
+    image: hdsphere-slave
+    container_name: hdsphere-slave1
+    hostname: quochuy026-slave1
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  hdsphere-slave2:
+    image: hdsphere-slave
+    container_name: hdsphere-slave2
+    hostname: quochuy026-slave2
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+

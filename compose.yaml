@@ -2,10 +2,10 @@ networks:
   hadoop-net:
     driver: bridge
 services:
-  master:
-    image: hadoop-master1
-    container_name: master
-    hostname: minhquang-master
+  hdsphere-master:
+    image: hdsphere-spark
+    container_name: hdsphere-master
+    hostname: quochuy026-master
 
     ports:
       - "60070:50070"
@@ -14,6 +14,9 @@ services:
       - "9864:9864"
       - "8042:8042"
       - "8088:8088"
+      - "8080:8080"
+      - "7070:7070"
+      - "4040:4040"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
