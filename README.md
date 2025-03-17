@@ -125,6 +125,14 @@ start-dfs.sh
 ```sh
 hdfs dfsadmin -report
 ```
+💡 **Start the YARN services:**  
+```sh
+start-yarn.sh
+```
+💡 **Check YARN Nodes**  
+```sh
+yarn node -list
+```
 
 💡 **Check Spark Cluster**  
 ```sh
@@ -142,9 +150,22 @@ pig -x mapreduce
 ```
 
 📌 Expected Output:
+- Check HDFS:
 ![Deme](https://github.com/user-attachments/assets/a79645b2-84bd-4f7e-aa7b-7bb5bf9474e5)
-
 If you see live DataNodes, your cluster is running successfully. 🚀
+
+- Check YARN:
+![yarn](https://github.com/user-attachments/assets/b583412a-7874-481c-80aa-16f84bb0cccd)
+If you see live NodeManagers, YARN is running successfully. 🚀
+
+- Check Spark:
+![spark](https://github.com/user-attachments/assets/5785493a-f845-47d1-b33b-e95652ba3767)
+
+- Check Hive:
+![hive](https://github.com/user-attachments/assets/0e155861-ae20-4a0a-bfe9-effd2efc10a6)
+
+- Check Pig:
+![pig](https://github.com/user-attachments/assets/42ea3960-8155-4101-bb00-a5cf1ee5445b)
 
 ---
 
@@ -168,8 +189,9 @@ You can access the following web interfaces to monitor and manage your Hadoop cl
   Provides an overview of cluster resource usage, running applications, and job details.  
 
 - **NameNode UI** → [http://localhost:9870](http://localhost:9870)  
-  Displays HDFS file system details, block distribution, and overall health status.  
-
+  Displays HDFS file system details, block distribution, and overall health status.
+- **Spark UI** → [http://localhost:4040](http://localhost:4040)                                                                
+  Track Spark jobs, tasks, and execution performance.
 ---
 
 ## ✨ Contributors
