@@ -14,6 +14,9 @@ services:
       - "9864:9864"
       - "8042:8042"
       - "8088:8088"
+      - "8080:8080"
+      - "7070:7070"
+      - "4040:4040"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"

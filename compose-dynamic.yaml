@@ -14,6 +14,9 @@ services:
       - "9864:9864"
       - "8042:8042"
       - "8088:8088"
+      - "8080:8080"
+      - "7070:7070"
+      - "4040:4040"
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
@@ -29,30 +32,6 @@ services:
     image: hdsphere-slave
     container_name: hdsphere-slave2
     hostname: quochuy026-slave2
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave3:
-    image: hdsphere-slave
-    container_name: hdsphere-slave3
-    hostname: quochuy026-slave3
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave4:
-    image: hdsphere-slave
-    container_name: hdsphere-slave4
-    hostname: quochuy026-slave4
-    networks:
-      - hadoop-net
-    command: /bin/bash -c "service ssh start; tail -f /dev/null"
-
-  hdsphere-slave5:
-    image: hdsphere-slave
-    container_name: hdsphere-slave5
-    hostname: quochuy026-slave5
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"

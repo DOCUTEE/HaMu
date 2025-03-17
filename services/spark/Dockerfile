@@ -16,6 +16,12 @@ RUN sudo apt-get update && sudo apt-get install -y curl zip unzip
 
 COPY /services/.bashrc /home/hadoopquochuy026/.bashrc
 
+USER root
+RUN chown hadoopquochuy026:hadoopquochuy026 /home/hadoopquochuy026/.bashrc
+
+USER hadoopquochuy026
+WORKDIR /home/hadoopquochuy026
+
 RUN curl -s "https://get.sdkman.io" | bash && \
     echo 'source "/home/hadoopquochuy026/.sdkman/bin/sdkman-init.sh"' >> /home/hadoopquochuy026/.bashrc && \
     bash -c "source /home/hadoopquochuy026/.sdkman/bin/sdkman-init.sh && sdk install scala 2.12.17"
