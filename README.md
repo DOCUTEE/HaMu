@@ -15,6 +15,8 @@
 - ✨ [Contributors](#contributors-)
 - 📞 [Contact](#contact)
 
+---
+
 ## 📖 **My Story** *(feel free to skip)* 
 
 Setting up a Hadoop cluster manually can be frustrating, especially for beginners. My friends and I faced several challenges when deploying a multi-node Hadoop cluster on **VMware**, such as configuration issues, poor scalability, and inefficient resource usage. To solve these problems, I developed **HaMu**, a tool that simplifies Hadoop deployment using Docker containers.  
@@ -32,7 +34,7 @@ To address these issues, I decided to containerize the Hadoop system using **Doc
 
 💡 I hope **HaMu** helps you quickly set up a Hadoop multi-node cluster, making it easier and more efficient to practice Hadoop. 🚀  
 
-
+---
 
 ## 👥 Authors
 
@@ -45,13 +47,17 @@ To address these issues, I decided to containerize the Hadoop system using **Doc
 - [Set the cluster owner's name.](#modify-the-owner-name)
 - [Interact with the cluster via CLI or Web UI.](#-interact-with-the-web-ui)
 
+---
+
 ## 🖥️ **OS Support**  
 - 🪟 **Windows** (via WSL2 or Docker Desktop)  
-- 🐧 **Linux** (Ubuntu, CentOS, Debian, etc.) – ⏳ *Coming Soon*  
+- 🐧 **Linux** (Ubuntu, CentOS, Debian, etc.)
 
 ## 📌 **Prerequisites** 
 - 🐳 **Docker**  
 - 🗃️ **Basic Knowledge of Hadoop**  
+
+---
 
 ## 🚀 Installation Guide  
 
@@ -69,37 +75,118 @@ Building Docker images is required only for the first time or after making chang
 
 > **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
 
+#### 🪟 **For Windows**  
 ```sh
-.\build-image.bat
+.\windows\build-image.bat
 ```
 
+#### 🐧 **For Linux**  
+```sh
+./linux/build-image.sh
+```
+---
+
 ### **Step 3: Enjoy your Hadoop Cluster**  
-By default, running the command below will launch a Hadoop cluster with 3 nodes (1 master and 2 slaves):
+
+#### 🪟 **For Windows**  
 ```sh
-.\start-cluster
+.\windows\start-cluster.bat
 ```
-If you want to customize the number of slave nodes, specify the total number of nodes (master + slaves) as an argument.
-For example, to start a cluster with 1 master and 5 slaves (6 nodes total):
+
+#### 🐧 **For Linux**  
 ```sh
-.\start-cluster 6
+./linux/start-cluster.sh
 ```
+
+*By default, this will start a cluster with **1 master and 2 slaves**.*  
+
+To start a cluster with **1 master and 5 slaves**:  
+```sh
+./linux/start-cluster.sh 6    # 🐧 Linux  
+.\windows\start-cluster.bat 6 # 🪟 Windows  
+```
+---
 
 ### **Step 4: Verify the Installation**  
 
 After **Step 3**, you will be inside the **master container's CLI**, where you can interact with the cluster.  
 
-1️⃣ **Start the HDFS services:**  
+💡 **Start the HDFS services:**  
 ```sh
 start-dfs.sh
 ```
-2️⃣ **Check active DataNodes:**
+💡 **Check HDFS Nodes**  
 ```sh
 hdfs dfsadmin -report
 ```
+💡 **Start the YARN services:**  
+```sh
+start-yarn.sh
+```
+💡 **Check YARN Nodes**  
+```sh
+yarn node -list
+```
+
 📌 Expected Output:
+- Check HDFS:
 ![Deme](https://github.com/user-attachments/assets/a79645b2-84bd-4f7e-aa7b-7bb5bf9474e5)
 
 If you see live DataNodes, your cluster is running successfully. 🚀
+
+- Check YARN:
+![yarn](https://github.com/user-attachments/assets/b583412a-7874-481c-80aa-16f84bb0cccd)
+If you see live NodeManagers, YARN is running successfully. 🚀
+
+
+### **Step 5: Test the System with Scripts**  
+To verify that the system is working correctly after start hdfs and yarn service, you can run the test scripts.
+
+#### **🔹 Step 1: Navigate to the Scripts Directory**  
+```sh
+cd scripts 
+```
+
+#### **🔹 Step 2: Run a Word Count Test**  
+```sh
+./word_count.sh
+```
+This script runs a sample **Word Count** job to ensure that HDFS and YARN are functioning correctly.
+
+---
+
+## **📌 Important Notes on Volumes & Containers**  
+Since the system uses **Docker Volumes** for **NameNode and DataNode**, ensure:
+- **The number of containers remains the same when restarting** (e.g., if started with 5 slaves, restart with 5 slaves).
+- If the number of slaves changes, you may face volume inconsistencies.
+
+✅ **How to Ensure the Correct Number of Containers During Restart**:
+1. **Always restart with the same number of containers**:
+    ```sh
+    ./linux/start-cluster.sh 6  # If you previously used 6 nodes
+    ```
+2. **Do not delete volumes when stopping the cluster**, use:
+
+#### 🪟 **For Windows**  
+```sh
+.\windows\stop-cluster.bat
+```
+
+#### 🐧 **For Linux**  
+```sh
+./linux/stop-cluster.sh
+```
+  Avoid using `docker compose -f compose-dynamic.yaml down -v` as it will remove NameNode & DataNode data.
+
+✅ **Check Existing Volumes**:
+```sh
+docker volume ls | grep hdfs
+```
+
+
+🚀 **If the Word Count job runs successfully, your system is fully operational!**
+
+---
 
 ### Modify the Owner Name  
 If you need to change the owner name, run the `rename-owner.py` script and enter your new owner name when prompted.  
@@ -164,4 +251,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 📧 Email: quangforwork1203@gmail.com  
 
 💬 My project still has many aspects that need improvement. I would greatly appreciate your feedback!
+
+
+
+
+
 
