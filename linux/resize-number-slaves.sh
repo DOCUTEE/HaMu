@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # Dừng script nếu có lỗi
+set -e  
 
 # Check if the parameter n is provided
 if [ -z "$1" ]; then
@@ -31,6 +31,9 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Remove old volumes section from compose-dynamic.yaml
+sed -i '/^volumes:/,$d' compose-dynamic.yaml
+
 # Add slave services to compose-dynamic.yaml
 for ((i=1; i<=n; i++)); do
     cat <<EOL >> compose-dynamic.yaml
@@ -38,11 +41,26 @@ for ((i=1; i<=n; i++)); do
     image: hadoop-slave1
     container_name: slave$i
     hostname: minhquang-slave$i
+    volumes:
+      - hdfs_datanode$i:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+    
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
 
 EOL
+done
+
+# Ensure volumes section is at the end and not duplicated
+cat <<EOL >> compose-dynamic.yaml
+
+volumes:
+  hdfs_namenode:
+
+EOL
+
+for ((i=1; i<=n; i++)); do
+    echo "  hdfs_datanode$i:" >> compose-dynamic.yaml
 done
 
 echo "Updated compose-dynamic.yaml with $n slave nodes."

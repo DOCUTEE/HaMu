@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # Dừng script nếu có lỗi
+set -e  
 
 # The default node number is 3
 N=${1:-3}
@@ -15,6 +15,9 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+docker build -t master-official:latest ./config-hadoop
+
+
 echo "Starting Docker Compose services..."
 docker compose -f compose-dynamic.yaml up -d
 if [ $? -ne 0 ]; then
@@ -22,31 +25,30 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# **Chờ tất cả container khởi động hoàn tất**
-echo "Waiting for all containers to be in 'running' state..."
-while true; do
-    STATUS=$(docker compose ps --format '{{.State}}' | grep -v "running" || true)
-    if [ -z "$STATUS" ]; then
-        echo "All containers are running!"
-        break
-    fi
-    echo "Some containers are still starting. Waiting..."
-    sleep 5
-done
+# echo "Waiting for all containers to be in 'running' state..."
+# while true; do
+#     STATUS=$(docker compose ps --format '{{.State}}' | grep -v "running" || true)
+#     if [ -z "$STATUS" ]; then
+#         echo "All containers are running!"
+#         break
+#     fi
+#     echo "Some containers are still starting. Waiting..."
+#     sleep 5
+# done
 
-echo "Copying workers file to master container..."
-docker cp config-hadoop/master/config/workers master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
-if [ $? -ne 0 ]; then
-    echo "Failed to copy workers file. Exiting..."
-    exit 1
-fi
+# echo "Copying workers file to master container..."
+# docker cp config-hadoop/master/config/workers master:/home/hadoopminhquang/hadoop/etc/hadoop/workers
+# if [ $? -ne 0 ]; then
+#     echo "Failed to copy workers file. Exiting..."
+#     exit 1
+# fi
 
-echo "Converting workers file to Unix format..."
-docker exec master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
-if [ $? -ne 0 ]; then
-    echo "Failed to convert workers file. Exiting..."
-    exit 1
-fi
+# echo "Converting workers file to Unix format..."
+# docker exec master dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/workers
+# if [ $? -ne 0 ]; then
+#     echo "Failed to convert workers file. Exiting..."
+#     exit 1
+# fi
 
 echo "Restarting the cluster..."
 docker exec -it master /bin/bash -c "su - hadoopminhquang"

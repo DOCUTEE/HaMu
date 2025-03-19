@@ -5,6 +5,7 @@
         "compose-dynamic.yaml",
         "compose.yaml",
         "config-hadoop/compose.yaml",
+        "config-hadoop/Dockerfile",
         "config-hadoop/hadoop-base/.bashrc",
         "config-hadoop/hadoop-base/Dockerfile",
         "config-hadoop/master/config/core-site.xml",

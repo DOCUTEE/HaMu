@@ -3,9 +3,13 @@ networks:
     driver: bridge
 services:
   master:
-    image: hadoop-master1
+    image: master-official
     container_name: master
     hostname: minhquang-master
+    volumes:
+      - hdfs_namenode:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode
+      - ./scripts:/home/hadoopminhquang/scripts
+
 
     ports:
       - "60070:50070"
@@ -17,43 +21,31 @@ services:
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
- 
-  slave1: 
-    image: hadoop-slave1 
-    container_name: slave1 
-    hostname: minhquang-slave1 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave2: 
-    image: hadoop-slave1 
-    container_name: slave2 
-    hostname: minhquang-slave2 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave3: 
-    image: hadoop-slave1 
-    container_name: slave3 
-    hostname: minhquang-slave3 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave4: 
-    image: hadoop-slave1 
-    container_name: slave4 
-    hostname: minhquang-slave4 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
- 
-  slave5: 
-    image: hadoop-slave1 
-    container_name: slave5 
-    hostname: minhquang-slave5 
-    networks: 
-      - hadoop-net 
-    command: /bin/bash -c "service ssh start; tail -f /dev/null" 
+  slave1:
+    image: hadoop-slave1
+    container_name: slave1
+    hostname: minhquang-slave1
+    volumes:
+      - hdfs_datanode1:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+    
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+  slave2:
+    image: hadoop-slave1
+    container_name: slave2
+    hostname: minhquang-slave2
+    volumes:
+      - hdfs_datanode2:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+    
+    networks:
+      - hadoop-net
+    command: /bin/bash -c "service ssh start; tail -f /dev/null"
+
+
+volumes:
+  hdfs_namenode:
+
+  hdfs_datanode1:
+  hdfs_datanode2:

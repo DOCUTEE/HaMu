@@ -10,6 +10,10 @@ COPY config/core-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/core-site.xml
 COPY config/hdfs-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/hdfs-site.xml
 COPY config/yarn-site.xml /home/hadoopminhquang/hadoop/etc/hadoop/yarn-site.xml
 
+
+RUN mkdir -p /home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode && \
+    chown -R hadoopminhquang:hadoopminhquang /home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode
+
 USER root
 # Convert files to Unix format
 RUN dos2unix /home/hadoopminhquang/hadoop/etc/hadoop/core-site.xml && \

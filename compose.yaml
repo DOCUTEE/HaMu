@@ -3,9 +3,13 @@ networks:
     driver: bridge
 services:
   master:
-    image: hadoop-master1
+    image: master-official
     container_name: master
     hostname: minhquang-master
+    volumes:
+      - hdfs_namenode:/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode
+      - ./scripts:/home/hadoopminhquang/scripts
+
 
     ports:
       - "60070:50070"
@@ -17,3 +21,5 @@ services:
     networks:
       - hadoop-net
     command: /bin/bash -c "service ssh start; tail -f /dev/null"
+volumes:
+  hdfs_namenode:

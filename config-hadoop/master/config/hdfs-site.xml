@@ -30,11 +30,5 @@ limitations under the License. See accompanying LICENSE file.
 		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/namenode</value>
 	</property>
 
-	<property>
-
-		<name>dfs.datanode.data.dir</name>
-
-		<value>/home/hadoopminhquang/hadoop/hadoop_data/hdfs/datanode</value>
-	</property>
-
+	
 </configuration>
