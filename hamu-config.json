@@ -23,7 +23,13 @@
         "linux/start-cluster.sh",
         "linux/stop-cluster.sh",
         "windows/stop-cluster.bat",
-        "hamu-config.json"
+        "hamu-config.json",
+        "services/.bashrc",
+        "services/hive/Dockerfile",
+        "services/hive/hive-env.sh",
+        "services/hive/hive-site.xml",
+        "services/pig/Dockerfile",
+        "services/spark/Dockerfile"
     ],
     "ownerName": "quochuy026"
 }
