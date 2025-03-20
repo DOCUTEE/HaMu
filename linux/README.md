@@ -8,7 +8,7 @@ cd HaMu
 ```
 
 ### **Step 2: Build Docker Images (Optional)**  
-Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)). Make sure Docker is running before proceeding.
+Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](https://github.com/DOCUTEE/HaMu?tab=readme-ov-file#modify-the-owner-name)). Make sure Docker is running before proceeding.
 
 > **⏳ Note:**
 > 
