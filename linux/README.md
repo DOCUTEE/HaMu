@@ -10,7 +10,13 @@ cd HaMu
 ### **Step 2: Build Docker Images (Optional)**  
 Building Docker images is required only for the first time or after making changes in the HaMu directory (such as [modifying the owner name](#modify-the-owner-name)). Make sure Docker is running before proceeding.
 
-> **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
+> **⏳ Note:**
+> 
+> * The first build may take a few minutes as no cached layers exist.
+> 
+> * You need to add execution permission `chmod +x linux/*` to these files in the linux folder.
+> 
+> * If you don't have enough permissions, you may need to run the command as a superuser `sudo`.
 
 ```sh
 ./linux/build-image.sh
