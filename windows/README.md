@@ -19,12 +19,12 @@ Building Docker images is required only for the first time or after making chang
 ### **Step 3: Enjoy your Hadoop Cluster**  
 By default, running the command below will launch a Hadoop cluster with 3 nodes (1 master and 2 slaves):
 ```sh
-.\windows\start-cluster
+.\windows\start-cluster.bat
 ```
 If you want to customize the number of slave nodes, specify the total number of nodes (master + slaves) as an argument.
 For example, to start a cluster with 1 master and 5 slaves (6 nodes total):
 ```sh
-.\windows\start-cluster 6
+.\windows\start-cluster.bat 6
 ```
 
 ### **Step 4: Verify the Installation**  
