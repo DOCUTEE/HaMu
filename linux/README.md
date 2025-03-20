@@ -13,18 +13,18 @@ Building Docker images is required only for the first time or after making chang
 > **⏳ Note:** The first build may take a few minutes as no cached layers exist.  
 
 ```sh
-./linux/build-image.bat
+./linux/build-image.sh
 ```
 
 ### **Step 3: Enjoy your Hadoop Cluster**  
 By default, running the command below will launch a Hadoop cluster with 3 nodes (1 master and 2 slaves):
 ```sh
-./linux/start-cluster
+./linux/start-cluster.sh
 ```
 If you want to customize the number of slave nodes, specify the total number of nodes (master + slaves) as an argument.
 For example, to start a cluster with 1 master and 5 slaves (6 nodes total):
 ```sh
-./linux/start-cluster 6
+./linux/start-cluster.sh 6
 ```
 
 ### **Step 4: Verify the Installation**  
