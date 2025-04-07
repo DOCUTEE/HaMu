@@ -1,1 +1,1 @@
-docker compose -f compose-dynamic.yaml down
+docker compose -f compose-dynamic.yaml stop
