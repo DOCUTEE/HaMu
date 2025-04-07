@@ -54,6 +54,7 @@ To address these issues, I decided to containerize the Hadoop system using **Doc
 - 🗃️ **Basic Knowledge of Hadoop**  
 
 ## 🚀 Installation Guide  
+**Please select one of the two options !**
 
 <a href="windows/README.md">
     <img src="https://github.com/user-attachments/assets/f23de778-a10f-4646-9acd-a9aaa65abd23" alt="Windows" style="width: 20%; max-width: 300px; height: auto;">
